@@ -15,7 +15,10 @@ This tutorial will illustrate a step by step guide on how to deploy a production
 ### Step 2: Build an api usinmg flask to serve the model
 
 
-### Step 3: Dockerize the application
+### Step 3: Dockerize the application 
+Flast <====> Apache [WSGI]
+
+Using the WSGI( web server gateway interface) for production ready application that will manage user concurrency as flask can not handle production application.
 
 
 ## Step 4: Deploy the application 

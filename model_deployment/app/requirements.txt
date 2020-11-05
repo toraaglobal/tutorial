@@ -1,3 +1,4 @@
 flask
 flasgger
 mod_wsgi
+scikit-learn==0.18.1

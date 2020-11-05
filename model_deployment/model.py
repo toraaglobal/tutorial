@@ -35,7 +35,7 @@ score = accuracy_score(prediction, y_test)
 print("accuracy score : {}".format(score))
 
 # save model
-with open('./app/model/randomforest.pki','wb') as model:
+with open('./app/model/randomforest.pk1','wb') as model:
     pickle.dump(rf, model, protocol=2)
 
 
