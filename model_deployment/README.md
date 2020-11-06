@@ -22,3 +22,26 @@ Using the WSGI( web server gateway interface) for production ready application t
 
 
 ## Step 4: Deploy the application 
+Create `heroku.yml` file in the root directory:
+```
+build:
+  docker:
+    web: Dockerfile
+```
+
+commit the file to the repo
+```
+git add heroku.yml
+
+git commit -m "Add heroku.yml"
+```
+
+set stack of the container
+```
+heroku stack:set container
+```
+push your application to master
+
+```
+git push heroku master
+```
