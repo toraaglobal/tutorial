@@ -8,6 +8,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.model_selection import train_test_split
 from sklearn.metrics import accuracy_score
 import pickle
+from pathlib import Path
 
 
 # database connection
@@ -36,7 +37,6 @@ def train_model(n_estimators=10,test_size=0.7):
         pickle.dump(model_rf, model, protocol=2)
     return score 
 
-_ = train_model(n_estimators=10,test_size=0.7)
 
 app = Flask(__name__)
 swagger = Swagger(app)
@@ -44,24 +44,6 @@ swagger = Swagger(app)
 @app.route('/')
 def home():
     return redirect('/apidocs')
-
-@app.route('/train')
-def re_train_model(n_estimators=10,test_size=0.7):
-    """Train model using data from database and save train model as a binary file using pickle
-    ---
-    parameters:
-     - name: n_estimators
-       in: query
-       type: number
-       required: true 
-
-     - name: test_size
-       in: query
-       type: number
-       required: true
-    """
-    score = train_model(n_estimators,test_size)
-    return str("Model Accuracy : {}".format(score))
 
 
 @app.route('/predict')
@@ -116,4 +98,8 @@ def predict_iris_file():
 
 
 if __name__ == '__main__':
+    my_file = Path("randomforest.pki")
+    if not my_file.is_file():
+        _ = train_model(n_estimators=10,test_size=0.7)
+
     app.run(host='0.0.0.0', port=5000)
