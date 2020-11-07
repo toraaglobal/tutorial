@@ -19,8 +19,8 @@ api = Api(app)
 template = {
   "swagger": "2.0",
   "info": {
-    "title": "Sentiment Analysis - API",
-    "description": "An API for sentiment analysis",
+    "title": "Unstructure Text Clustering - API",
+    "description": "Unstructure text clustering using kmeans",
     "version": "0.1.1",
     "contact": {
       "name": "Tajudeen Abdulazeez",

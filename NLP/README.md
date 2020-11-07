@@ -1,8 +1,8 @@
 # How to deploy a production ready machine learning model?
-Deploying a machine learning model for sentiment analysis using docker container and flask API
+Deploying a machine learning model for  clustering unstructured text using kmeans, docker container and flask API
 ***
 
-In this article i will illustrate a step by step guide on how to deploy a machine learning model using docker container. We will use waitress to serve the flask API for a production ready application.
+In this article, I will illustrate a step by step guide on how to deploy a flask API to clustered unstructured text  using kmeans and docker container. We will use waitress package to serve the flask API for a production ready application.
 
 Here is the URL of the model we will build and deploy on heroku with details step by step guide.
 [Click here to explore the deployed API](wwww.xyz.com)
