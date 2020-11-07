@@ -60,37 +60,37 @@ api = Api(app)
 
 
 class DigitRecognition(Resource):
-    def post():
-        """
-        prediction of mnist
-        ---
-        parameters:
-            - name: image
-              in: formData
-              type: file
-              required: true
+  def post(self):
+    """
+    prediction of mnist
+    ---
+    parameters:
+        - name: image
+          in: formData
+          type: file
+          required: true
 
-        responses:
-            500:
-                description: Bad input... use mnist dataset for prediction
-            200:
-                description: success
-                schema:
-                    parameters:
-                        result:
-                            type: string
-                            description: the prediction of input image
+    responses:
+        500:
+            description: Bad input... use mnist dataset for prediction
+        200:
+            description: success
+            schema:
+                parameters:
+                    result:
+                        type: string
+                        description: the prediction of input image
 
-        """
-        im = Image.open(request.files['image'])
-        im2arr = np.array(im).reshape((1, 1, 28, 28))
-        return str(np.argmax(model.predict(im2arr)))
-        
+    """
+    im = Image.open(request.files['image'])
+    im2arr = np.array(im).reshape((1, 1, 28, 28))
+    return str(np.argmax(model.predict(im2arr)))
+      
 
 ## Api resource routing
 api.add_resource(DigitRecognition, '/digit')
 
 if __name__ == "__main__":
-    serve(app, host='0.0.0.0',port=5000)
+  serve(app, host='0.0.0.0',port=5000)
     
   
