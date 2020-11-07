@@ -15,7 +15,7 @@ Project link on github : `https://github.com/toraaglobal/tutorial/tree/machine_l
 
 Our folder structure will look like this:
 
-![folder structure](./model/folder_structure.png)
+![folder structure](https://github.com/toraaglobal/tutorial/blob/machine_learning/IMG/web/model/folder_structure.png?raw=true)
 
 ### Step 1 : Build a machine machine learning model
 In real world, we will need to train and optimized our hyperparameters for the best performance. for this example, we will be using a base line deep learning model and the mnist datasets.
