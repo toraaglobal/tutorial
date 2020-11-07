@@ -14,7 +14,7 @@ Project link on github : `https://github.com/toraaglobal/tutorial/tree/machine_l
 * Scalibility
 
 
-we will be crreating the follwing filrs using the folder structure below
+Our folder structure will look like this:
 
 ![](./model/folder_structure.png)
 
@@ -338,4 +338,12 @@ Release the newly pushed images to deploy your app.
 ```
 heroku container:release web
 ```
+
+
+**References**
+
+https://www.udemy.com/course/deploy-data-science-nlp-models-with-docker-containers/
+
+https://kanoki.org/2020/07/18/python-api-documentation-using-flask-swagger/
+
 
