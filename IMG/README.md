@@ -2,7 +2,7 @@
 Four step to Deploy a deep learning model using docker container and flask API
 ***
 
-In this article, I will illustrate a 4-step  to deploy a deep learning model using  flask API and docker container. Waitress package to be use to serve the flask API for a production ready application.
+In this article, I will illustrate a 4-step  to deploy a deep learning model using  flask API and docker container. Waitress package manage user concurrency should wanted to use in production.
 
 Here is the URL of the model we will build and deploy on heroku with details step by step guide.
 
