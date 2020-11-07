@@ -5,7 +5,7 @@ Four step to Deploy a deep learning model using docker container and flask API. 
 In this article, I will illustrate a 4-step  to deploy a deep learning model using  flask API and docker container. Waitress package manage user concurrency should wanted to use in production.
 
 
-Project link on github : `https://github.com/toraaglobal/tutorial/tree/machine_learning/IMG`
+Project link on github : `https://github.com/toraaglobal/tutorial/tree/machine_learning/model_deployment/IMG`
 
 ### Why docker container?
 * its easy to reproduce in different environment
@@ -15,7 +15,7 @@ Project link on github : `https://github.com/toraaglobal/tutorial/tree/machine_l
 
 Our folder structure will look like this:
 
-![folder structure](https://github.com/toraaglobal/tutorial/blob/machine_learning/IMG/web/model/folder_structure.png?raw=true)
+![folder structure](https://github.com/toraaglobal/tutorial/blob/machine_learning/model_deployment/IMG/web/model/folder_structure.png?raw=true)
 
 ### Step 1 : Build a machine machine learning model
 In real world, we will need to train and optimized our hyperparameters for the best performance. for this example, we will be using a base line deep learning model and the mnist datasets.
