@@ -5,3 +5,6 @@ waitress
 config
 flask_restful
 stemming
+pandas
+numpy
+

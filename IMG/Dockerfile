@@ -6,8 +6,9 @@ WORKDIR /web/
 COPY ./web /web/
 
 RUN pip install -r requirements.txt 
-RUN conda install -c conda-forge keras
 RUN pip install -Iv tensorflow_estimator==1.13.0
+RUN conda install -c conda-forge keras
+
 RUN python train_model.py
    
 CMD ["python", "index.py"]

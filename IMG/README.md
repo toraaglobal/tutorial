@@ -18,7 +18,7 @@ Our folder structure will look like this:
 ![](./model/folder_structure.png)
 
 ### Step 1 : Build a machine machine learning model
-In real world, we will need to train and optimized our hyperparameters for the best performance we are tring to solve. for this example, we will be using a base line deep learning model and the mnist datasets.
+In real world, we will need to train and optimized our hyperparameters for the best performance. for this example, we will be using a base line deep learning model and the mnist datasets.
 
 create a python file called `train_model.py` to train and save the model.
 
@@ -349,5 +349,7 @@ heroku container:release web
 https://www.udemy.com/course/deploy-data-science-nlp-models-with-docker-containers/
 
 https://kanoki.org/2020/07/18/python-api-documentation-using-flask-swagger/
+
+https://devcenter.heroku.com/articles/build-docker-images-heroku-yml
 
 
