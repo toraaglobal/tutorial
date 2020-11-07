@@ -19,12 +19,12 @@ api = Api(app)
 template = {
   "swagger": "2.0",
   "info": {
-    "title": "Flask Restful Swagger Demo",
-    "description": "A Demof for the Flask-Restful Swagger Demo",
+    "title": "Sentiment Analysis - API",
+    "description": "An API for sentiment analysis",
     "version": "0.1.1",
     "contact": {
-      "name": "Kanoki",
-      "url": "https://Kanoki.org",
+      "name": "Tajudeen Abdulazeez",
+      "url": "https://www.toraaglobal.com/",
     }
   },
   "securityDefinitions": {
@@ -44,7 +44,7 @@ template = {
 }
 
 app.config['SWAGGER'] = {
-    'title': 'My API',
+    'title': 'Sentiment Analysis',
     'uiversion': 3,
     "specs_route": "/"
 }
@@ -59,7 +59,7 @@ class Todo(Resource):
       post endpoint
       ---      
       tags:
-        - Flast Restful APIs
+        - Restful APIs
       parameters:
         - name: a
           in: query
