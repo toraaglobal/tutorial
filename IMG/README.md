@@ -4,7 +4,6 @@ Four step to Deploy a deep learning model using docker container and flask API. 
 
 In this article, I will illustrate a 4-step  to deploy a deep learning model using  flask API and docker container. Waitress package manage user concurrency should wanted to use in production.
 
-Here is the URL of the model we will build and deploy on heroku with details step by step guide.
 
 Project link on github : `https://github.com/toraaglobal/tutorial/tree/machine_learning/NLP`
 
@@ -253,6 +252,11 @@ sudo docker build -t nlpapi . && sudo docker run -p 5000:5000 --name nlpapi -d n
 ```
 
 create a `stop_application.sh` file to stop the application in the dev environment
+
+```
+#!/bin/bash
+sudo docker stop nlpapi && sudo docker container prune && sudo docker image prune 
+```
 
 
 starting the application
