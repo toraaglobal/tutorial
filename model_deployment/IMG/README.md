@@ -1,4 +1,4 @@
-# How to deploy a machine learning model using docker?
+# How to deploy a machine learning model using docker
 Four step to Deploy a deep learning model using docker container and flask API. Heroku will be used for the deployment.
 ***
 
