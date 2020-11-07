@@ -1,11 +1,11 @@
-# How to deploy a production ready machine learning model?
+# How to deploy a machine learning model using docker?
 Four step to Deploy a deep learning model using docker container and flask API. Heroku will be used for the deployment.
 ***
 
 In this article, I will illustrate a 4-step  to deploy a deep learning model using  flask API and docker container. Waitress package manage user concurrency should wanted to use in production.
 
 
-Project link on github : `https://github.com/toraaglobal/tutorial/tree/machine_learning/NLP`
+Project link on github : `https://github.com/toraaglobal/tutorial/tree/machine_learning/IMG`
 
 ### Why docker container?
 * its easy to reproduce in different environment
