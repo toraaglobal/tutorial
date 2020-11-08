@@ -1,69 +1,75 @@
-from keras.datasets import mnist
-import matplotlib. pyplot as plt
-import numpy
 from keras.models import Sequential
-from keras.layers import Dense, Dropout, Flatten
-from keras.layers.convolutional import Conv2D, MaxPooling2D
+from keras.layers import Dense
+from keras.layers import Dropout
 from keras.utils import np_utils
-from keras import backend as K
-K.set_image_dim_ordering('th')
-
-# Load dataset (download if needed)
-(X_train, y_train), (X_test, y_test) = mnist.load_data()
-
-plt.subplot(221)
-plt.imshow(X_train[0], cmap=plt.get_cmap('gray'))
-plt.subplot(222)
-plt.imshow(X_train[1], cmap=plt.get_cmap('gray'))
-plt.subplot(223)
-plt.imshow(X_train[2], cmap=plt.get_cmap('gray'))
-plt.subplot(224)
-plt.imshow(X_train[3], cmap=plt.get_cmap('gray'))
-
-plt.show()
+import numpy 
 
 
-# fix the seed 
-seed = 7
-numpy.random.seed(seed)
+def load_mnist(path, kind='train'):
+    """Load MNIST data from `path`"""
+    labels_path = os.path.join(path, '%s-labels-idx1-ubyte' % kind)
+    images_path = os.path.join(path, '%s-images-idx3-ubyte' % kind)
+        
+    with open(labels_path, 'rb') as lbpath:
+        magic, n = struct.unpack('>II', lbpath.read(8))
+        labels = np.fromfile(lbpath, dtype=np.uint8)
 
-X_train = X_train.reshape(X_train.shape[0], 1, 28, 28).astype('float32')
-X_test = X_test.reshape(X_test.shape[0], 1, 28, 28).astype('float32')
+    with open(images_path, 'rb') as imgpath:
+        magic, num, rows, cols = struct.unpack(">IIII", imgpath.read(16))
+        images = np.fromfile(imgpath, dtype=np.uint8).reshape(len(labels), 784)
+ 
+    return images, labels
 
+# MODEL
+# BUILD THE BASELINE
+
+def baseline_model(num_pixels,num_classes, optimizer='adam',metrics=['accuracy']):
+    # create model
+    model = Sequential()
+    model.add(Dense(num_pixels, input_dim=num_pixels, kernel_initializer='normal', activation='relu'))
+    model.add(Dense(num_classes, kernel_initializer='normal', activation='softmax'))
+    # Compile model
+    model.compile(loss='categorical_crossentropy', optimizer=optimizer, metrics=metrics)
+    return model
+
+
+## load traning set
+X_train, y_train = load_mnist('./data/', kind='train')
+print('Rows: %d, columns: %d' % (X_train.shape[0], X_train.shape[1]))
+
+## load test set
+X_test, y_test = load_mnist('./data/', kind='t10k')
+print('Rows: %d, columns: %d' % (X_test.shape[0], X_test.shape[1]))
+
+
+
+# SCRUB
+# NORMALIZE INPUTS FROM RGB COLOR TO 0-1
 X_train = X_train / 255
 X_test = X_test / 255
 
-# one hot encoding
-# output - [ 0 0 0 0 0 1 0 0 0 0 ]
-y_train = np_utils.to_categorical(y_train)
-y_test = np_utils.to_categorical(y_test)
 
-num_classes = y_train.shape[1]
+# SCRUB
+# FLATTEN 28 x 28 IMAGE TO 784 VECTOR
+num_pixels = X_train.shape[1]
 
-
-def baseline_model():
-    model = Sequential()
-    model.add(Conv2D(8, (3,3), input_shape=(1,28,28), activation='relu'))
-    model.add(MaxPooling2D(pool_size=(2,2)))
-    
-    model.add(Flatten())
-    model.add(Dense(4, activation='relu'))
-    model.add(Dense(num_classes, activation='softmax'))
-    
-    model.compile(loss='categorical_crossentropy', optimizer='adam',
-                  metrics=['accuracy'])
-    
-    return model
+# SCRUB
+# THE OLD ONE HOT ENCODE - CONVERT "CATEGORICAL" CLASSIFICATION TO ENCODE
+# A "BINARIZATION" OF THE CATEGORIES
+y_train_k = np_utils.to_categorical(y_train)
+y_test_k = np_utils.to_categorical(y_test)
+num_classes = 10
 
 # build a model
-model = baseline_model()
+model = baseline_model(num_pixels,num_classes, optimizer='adam',metrics=['accuracy'])
+
 
 # Fit 
-model.fit(X_train, y_train, validation_data=(X_test, y_test), epochs=10,
+model.fit(X_train, y_train_k, validation_data=(X_test, y_test_k), epochs=10,
           batch_size=32, verbose=2)
 
 model.save('./model/model.h5')
 
 # Final eval
-scores = model.evaluate(X_test, y_test, verbose=0)
+scores = model.evaluate(X_test, y_test_k, verbose=0)
 print("CNN error: %.2f%%" % (100 - scores[1]*100))

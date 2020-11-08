@@ -4,7 +4,4 @@ scikit-learn==0.18.1
 waitress
 config
 flask_restful
-stemming
-pandas
-numpy
 
